@@ -7,7 +7,7 @@ use Illuminate\Database\Query\Grammars\MySqlGrammar;
 class QueryGrammar extends MySqlGrammar 
 {
 
-	protected function wrapJsonSelector($value)
+    protected function wrapJsonSelector($value)
     {
         $path = explode('->', $value);
 
