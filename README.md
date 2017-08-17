@@ -1,5 +1,5 @@
 # laravel-mariadb
-Add MariaDB JSON select support to Laravel
+Add MariaDB JSON support to Laravel. Requires at least MariaDB 10.2. 
 
 #### Install
 Using composer:
@@ -24,5 +24,14 @@ set **driver** in database configuration to **mariadb**
 'defaultconnection' => [
     'driver' => 'mariadb',
 ```
-and that's all
-
+#### Added functionality
+##### Query builder:
+Builds json select statements to work with MariaDB
+```php
+$query->where('somejson->something->somethingelse', 'somevalue')
+```
+##### Migration
+Adds needed **CHECK (field IS NULL OR JSON_VALID(field))** to json fields during migrations
+```php
+$table->json('field') && json(field)->nullable()
+```    
