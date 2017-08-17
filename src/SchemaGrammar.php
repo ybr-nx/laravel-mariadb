@@ -19,10 +19,10 @@ class SchemaGrammar extends MySqlGrammar
     protected function modifyCheck(Blueprint $blueprint, Fluent $column)
     {
         if ($this->getType($column) == 'json') {
-        	return sprintf(' CHECK (%sJSON_VALID(%s))', 
-        		$column->nullable ? ($this->wrap($column->name) . ' IS NULL OR ') : '',
-        		$this->wrap($column->name)
-        	);
+            return sprintf(' CHECK (%sJSON_VALID(%s))', 
+                $column->nullable ? ($this->wrap($column->name) . ' IS NULL OR ') : '',
+                $this->wrap($column->name)
+            );
         }
     }
 }
