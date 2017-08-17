@@ -14,5 +14,7 @@
             "YbrNX\\MariaDB\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "illuminate/database": "^5.2"
+    }
 }
