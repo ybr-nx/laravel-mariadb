@@ -31,8 +31,8 @@ Builds json select statements to work with MariaDB
 $query->where('somejson->something->somethingelse', 'somevalue')
 ```
 ##### Migration
-Adds needed **CHECK (field IS NULL OR JSON_VALID(field))** to json fields during migrations
+Adds needed validation to json fields during migrations
 ```php
-$table->json('field')
-$table->json('field')->nullable()
+$table->json('field') //CHECK (JSON_VALID(field))
+$table->json('field')->nullable() //CHECK (field IS NULL OR JSON_VALID(field))
 ```    
