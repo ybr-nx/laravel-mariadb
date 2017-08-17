@@ -1,0 +1,17 @@
+{
+    "name": "ybr-nx/laravel-mariadb",
+    "description": "Add MariaDB JSON select support to Laravel",
+    "license": "EUPL",
+    "authors": [
+        {
+            "name": "Ingmar Aasoja",
+            "email": "ingmar@aasoja.ee"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "YbrNX\\MariaDB\\": "src/"
+        }
+    },
+    "require": {}
+}
