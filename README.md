@@ -33,5 +33,6 @@ $query->where('somejson->something->somethingelse', 'somevalue')
 ##### Migration
 Adds needed **CHECK (field IS NULL OR JSON_VALID(field))** to json fields during migrations
 ```php
-$table->json('field') && json('field')->nullable()
+$table->json('field')
+$table->json('field')->nullable()
 ```    
