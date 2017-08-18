@@ -36,12 +36,12 @@ $table->json('field')->nullable() //CHECK (field IS NULL OR JSON_VALID(field))
 ##### Query builder
 Builds json select statements to work with MariaDB
 ```php
-$query->where('somejson->something->somethingelse', 2)... //integer value
-$query->where('somejson->something->somethingelse', '"somedata"')... //string value
+$query->where('somejson->something->somethingelse', 2)
 DB::table('sometable')->select('sometable.somedata', 'sometable.somejson->somedata as somejsondata')
 ```
 
 **NB** There is difference between MySQL and MariaDB behaviour in JSON_EXTRACT() function. 
+It should be fixed in MariaDB 10.2.8: https://jira.mariadb.org/browse/MDEV-12604
 ```php
 $query->where('somejson->something->somethingelse', '"somedata"') //works with string in MariaDB
 $query->where('somejson->something->somethingelse', 'somedata') //works with string in MySQL
