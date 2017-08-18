@@ -15,6 +15,6 @@
         }
     },
     "require": {
-        "illuminate/database": "^5.2"
+        "illuminate/database": "^5.3"
     }
 }
