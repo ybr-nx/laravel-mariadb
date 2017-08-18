@@ -2,6 +2,7 @@
 
 namespace YbrNX\MariaDB;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Query\Grammars\MySqlGrammar;
 
 class QueryGrammar extends MySqlGrammar 
