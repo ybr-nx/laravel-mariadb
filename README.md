@@ -28,9 +28,9 @@ set **driver** in database configuration to **mariadb**
 ##### Query builder
 Builds json select statements to work with MariaDB
 ```php
-$query->where('somejson->something->somethingelse', 'somevalue')...
-DB::table('sometable')->select('sometable.somedata', 'sometable.somejson->somedata as somejsondata')... //uses JSON_EXTRACT()
-DB::table('sometable')->select('somedata', 'somejson->somedata as somejsondata')... //uses JSON_VALUE()
+$query->where('somejson->something->somethingelse', 2)... //integer value
+$query->where('somejson->something->somethingelse', '"somedata"')... //string value
+DB::table('sometable')->select('sometable.somedata', 'sometable.somejson->somedata as somejsondata')
 ```
 ##### Migration
 Adds needed validation to json fields during migrations
