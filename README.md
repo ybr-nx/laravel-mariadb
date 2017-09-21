@@ -39,6 +39,7 @@ Builds json select statements to work with MariaDB
 ```php
 $query->where('somejson->something->somethingelse', 2)
 DB::table('sometable')->select('sometable.somedata', 'sometable.somejson->somedata as somejsondata')
+DB::table('sometable')->where('somejson->somedata', $user_id)->update(['somejson->otherdata' => 'newvalue']);
 ```
 
 **NB** There is bug in **MariaDB < 10.2.8** JSON_EXTRACT() behaviour function. 
