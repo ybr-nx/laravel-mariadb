@@ -1,6 +1,6 @@
 # laravel-mariadb
 Add MariaDB JSON support to Laravel. 
-Requires at least MariaDB 10.2 (and 10.2.7 to use ->json() migrations)
+Requires at least MariaDB 10.2.3 (and 10.2.7 to use ->json() migrations)
 
 #### Install
 Using composer:
@@ -8,7 +8,7 @@ Using composer:
 $ composer require ybr-nx/laravel-mariadb
 ```
 
-#### Configure
+#### Configure (only Larvel 5.3 and 5.4)
 Include MariaDBServiceProvider in your config/app.php:
 
 ```php

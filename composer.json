@@ -16,5 +16,12 @@
     },
     "require": {
         "illuminate/database": "^5.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YbrNX\\MariaDB\\MariaDBServiceProvider",
+            ]
+        }
     }
 }
