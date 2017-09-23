@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "YbrNX\\MariaDB\\MariaDBServiceProvider",
+                "YbrNX\\MariaDB\\MariaDBServiceProvider"
             ]
         }
     }
