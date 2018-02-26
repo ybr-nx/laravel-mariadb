@@ -8,10 +8,10 @@ class MariaDBServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->resolving('db', function ($db, $app) {
-            $db->extend('mariadb', function ($config) use ($app){
-                return (new ConnectionFactory($app))->make($config);
-            });
+        $app = $this->app;
+
+        $app['db']->extend('mariadb', function ($config) use ($app) {
+            return (new ConnectionFactory($app))->make($config);
         });
     }
 }

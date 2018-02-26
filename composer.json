@@ -15,7 +15,7 @@
         }
     },
     "require": {
-        "illuminate/database": "^5.3"
+        "illuminate/database": "^5.3 | ^5.4 | ^5.5 | ^5.6"
     },
     "extra": {
         "laravel": {
