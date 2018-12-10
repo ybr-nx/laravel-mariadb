@@ -12,7 +12,9 @@ class QueryGrammar extends MySqlGrammar
     {
         $path = explode('->', $value);
 
-        $field = $this->wrapValue(array_shift($path));
+        $field = collect(explode('.', array_shift($path)))->map(function ($part) {
+            return $this->wrapValue($part);
+        })->implode('.');
 
         return sprintf('JSON_EXTRACT(%s, \'$.%s\')', $field, collect($path)->map(function ($part) {
             return '"'.$part.'"';
