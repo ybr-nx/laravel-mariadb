@@ -10,13 +10,21 @@ class QueryGrammar extends MySqlGrammar
 
     protected function wrapJsonSelector($value)
     {
-        $path = explode('->', $value);
+        if (Str::contains($value, '->>')) {
+            $delimiter = '->>';
+            $format = 'JSON_UNQUOTE(JSON_EXTRACT(%s, \'$.%s\'))';
+        } else {
+            $delimiter = '->';
+            $format = 'JSON_EXTRACT(%s, \'$.%s\')';
+        }
+
+        $path = explode($delimiter, $value);
 
         $field = collect(explode('.', array_shift($path)))->map(function ($part) {
             return $this->wrapValue($part);
         })->implode('.');
 
-        return sprintf('JSON_EXTRACT(%s, \'$.%s\')', $field, collect($path)->map(function ($part) {
+        return sprintf($format, $field, collect($path)->map(function ($part) {
             return '"'.$part.'"';
         })->implode('.'));
     }
@@ -28,13 +36,21 @@ class QueryGrammar extends MySqlGrammar
 
         if(Str::contains($mysqlWrap, '.JSON_EXTRACT')) {
 
-            $path = explode('->', $value);
+            if (Str::contains($value, '->>')) {
+                $delimiter = '->>';
+                $format = 'JSON_UNQUOTE(JSON_EXTRACT(%s, \'$.%s\'))';
+            } else {
+                $delimiter = '->';
+                $format = 'JSON_EXTRACT(%s, \'$.%s\')';
+            }
+
+            $path = explode($delimiter, $value);
 
             $field = collect(explode('.', array_shift($path)))->map(function ($part) {
                 return $this->wrapValue($part);
             })->implode('.');
 
-            return sprintf('JSON_EXTRACT(%s, \'$.%s\')', $field, collect($path)->map(function ($part) {
+            return sprintf($format, $field, collect($path)->map(function ($part) {
                     return '"'.$part.'"';
                 })->implode('.')
             );
